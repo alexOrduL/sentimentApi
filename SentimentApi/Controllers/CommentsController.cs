@@ -10,13 +10,11 @@ namespace SentimentApi.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly AppDbContext _context;
-        private readonly SentimentAnalyzer _sentimentAnalyzer;
 
 
-        public CommentsController(AppDbContext context, SentimentAnalyzer sentimentAnalyzer)
+        public CommentsController(AppDbContext context)
         {
             _context = context;
-            _sentimentAnalyzer = sentimentAnalyzer;
         }
 
         private string AnalyzeSentiment(string text)
@@ -32,32 +30,21 @@ namespace SentimentApi.Controllers
        [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCommentDto dto)
         {
-            var sentiment = _sentimentAnalyzer.Analyze(dto.CommentText);
 
             var comment = new Comment
             {
                 ProductId = dto.ProductId,
                 CommentText = dto.CommentText,
-                Sentiment = sentiment
+                UserId = dto.UserId,
+                Sentiment = AnalyzeSentiment(dto.CommentText),
             };
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new { id = comment.Id }, comment);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Comment>> GetById(int id)
-        {
-            var comment = await _context.Comments.FindAsync(id);
-
-            if (comment == null)
-                return NotFound();
-
             return Ok(comment);
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] string? product_id, [FromQuery] string? sentiment)
         {
