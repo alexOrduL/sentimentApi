@@ -23,9 +23,11 @@ API RESTful para gestionar comentarios de productos y analizar su sentimiento. D
 
 ---
 
-<!-- ## 🐳 Ejecución con Docker
+## 🐳 Ejecución con Docker
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/tu_usuario/sentiment-api.git
-   cd sentiment-api -->
+1. Clona el repositorio
+2. En la raiz del proyecto:
+      ```bash
+   
+   docker compose up -d --build
+
