@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - backend-network
+
+  sentiment-api:
+    build:
+      context: ./SentimentApi
+    container_name: sentiment-api
+    ports:
+      - "5001:80"
+    depends_on:
+      - sqlserver
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
