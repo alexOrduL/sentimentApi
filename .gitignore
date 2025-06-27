@@ -1,0 +1,54 @@
+# Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# ASP.NET Core secrets
+secrets.json
+
+# dotnet tooling
+*.dbmdl
+*.bak
+*.log
+
+# Entity Framework
+Migrations/*Designer.cs
+Migrations/*Snapshot.cs
+
+# Logs
+*.log
+
+*.pid
+docker-compose.override.yml
+
+# macOS system files
+.DS_Store
+
+# Test coverage reports
+coverage/
+TestResults/
+
+# Publish output
+publish/
+
+# EF Core SQLite dev/test databases
+*.db
+
+# Don't include user secrets folder
+**/Properties/launchSettings.json
+
+# Don't include environment config (if sensitive)
+appsettings.Development.json
+appsettings.Local.json
+.env
