@@ -1,8 +1,10 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentimentApi", "SentimentApi\SentimentApi.csproj", "{13A8C57F-177E-76AF-889F-2E657D4D8EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentimentApi.Tests", "SentimentApi.Tests\SentimentApi.Tests.csproj", "{2164B4B1-8EB5-4484-AE77-F7C0246F03D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +16,10 @@ Global
 		{13A8C57F-177E-76AF-889F-2E657D4D8EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13A8C57F-177E-76AF-889F-2E657D4D8EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13A8C57F-177E-76AF-889F-2E657D4D8EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2164B4B1-8EB5-4484-AE77-F7C0246F03D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2164B4B1-8EB5-4484-AE77-F7C0246F03D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2164B4B1-8EB5-4484-AE77-F7C0246F03D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2164B4B1-8EB5-4484-AE77-F7C0246F03D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
