@@ -1,6 +1,0 @@
-@SentimentApi_HostAddress = http://localhost:5102
-
-GET {{SentimentApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

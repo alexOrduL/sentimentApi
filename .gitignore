@@ -1,54 +1,98 @@
-# Build artifacts
+### .NET ###
+# Build and project directories
 bin/
 obj/
+[Bb]uild/
+[Oo]bj/
+publish/
+*.nupkg
+*.vspscc
+*.pidb
 
 # User-specific files
 *.user
+*.userprefs
 *.suo
 *.userosscache
 *.sln.docstates
 
-# Visual Studio Code
+# IDE files
 .vscode/
-
-# Rider
 .idea/
+.vs/
+*.swp
+*.swo
 
-# ASP.NET Core secrets
-secrets.json
+# Rider/ReSharper
+_ReSharper.*
+*.sln.iml
 
-# dotnet tooling
-*.dbmdl
+### Logs and temp files ###
+*.log
+*.tmp
 *.bak
-*.log
-
-# Entity Framework
-Migrations/*Designer.cs
-Migrations/*Snapshot.cs
-
-# Logs
-*.log
-
 *.pid
-docker-compose.override.yml
+*.cache
+*.ilk
+*.pdb
 
-# macOS system files
+### Docker ###
+docker-compose.override.yml
+*.dockerignore
+docker-data/
+
+### macOS ###
 .DS_Store
 
-# Test coverage reports
+### Dependencies ###
+.nuget/
+packages/
+node_modules/
+jspm_packages/
+
+### Test results ###
+[Tt]est[Rr]esult*/
+[Ll]og/
 coverage/
-TestResults/
+*.coverage
+*.opencover.xml
 
-# Publish output
-publish/
+### Entity Framework Core ###
+# Excluir archivos de migraciones (opcional - solo si se generan al clonar)
+Migrations/*.Designer.cs
+Migrations/*.Snapshot.cs
 
-# EF Core SQLite dev/test databases
+# SQLite databases
 *.db
+*.sqlite
 
-# Don't include user secrets folder
-**/Properties/launchSettings.json
-
-# Don't include environment config (if sensitive)
+### Configuraciones sensibles ###
 appsettings.Development.json
 appsettings.Local.json
+appsettings.private.json
+secrets.json
 .env
+.env.local
+*.enc
+**/Properties/launchSettings.json
+
+### Archivos de proyecto ###
+# Excluir archivos de resincronización de proyectos
+*.csproj.user
+*.vbproj.user
+
+### Otros ###
+# Archivos de Roslyn
+*.ide/
+*.sbr
+*.ipch
+
+# Archivos de paquetes
+*.msi
+*.msm
+*.msp
+
+# Archivos de instalación
+_UpgradeReport_Files/
+UpgradeLog*.XML
+UpgradeLog*.htm
