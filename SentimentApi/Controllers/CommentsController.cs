@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SentimentApi.Data;
+using SentimentApi.Dtos;
 using SentimentApi.Models;
+using SentimentApi.Services;
 
 namespace SentimentApi.Controllers
 {
@@ -10,21 +12,13 @@ namespace SentimentApi.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly SentimentAnalyzer _sentimentAnalyzer;
 
 
-        public CommentsController(AppDbContext context)
+        public CommentsController(AppDbContext context, SentimentAnalyzer sentimentAnalyzer)
         {
             _context = context;
-        }
-
-        private string AnalyzeSentiment(string text)
-        {
-            var lower = text.ToLower();
-            if (lower.Contains("excelente") || lower.Contains("genial") || lower.Contains("fantástico") || lower.Contains("bueno") || lower.Contains("increíble"))
-                return "positivo";
-            if (lower.Contains("malo") || lower.Contains("terrible") || lower.Contains("problema") || lower.Contains("defecto") || lower.Contains("horrible"))
-                return "negativo";
-            return "neutral";
+            _sentimentAnalyzer = sentimentAnalyzer;
         }
 
        [HttpPost]
@@ -36,13 +30,13 @@ namespace SentimentApi.Controllers
                 ProductId = dto.ProductId,
                 CommentText = dto.CommentText,
                 UserId = dto.UserId,
-                Sentiment = AnalyzeSentiment(dto.CommentText),
+                Sentiment = _sentimentAnalyzer.Analyze(dto.CommentText),
             };
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            return Ok(comment);
+            return CreatedAtAction(nameof(Create), new { id = comment.Id }, comment);
         }
         
         [HttpGet]
