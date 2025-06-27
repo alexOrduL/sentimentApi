@@ -6,12 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Forzar escucha en todas las IPs del contenedor
 builder.WebHost.UseUrls("http://0.0.0.0:80");
 
-// Agregar servicios
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configurar EF Core con SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -26,7 +24,7 @@ using (var scope = app.Services.CreateScope())
 Console.WriteLine("Connection string:");
 Console.WriteLine(builder.Configuration.GetConnectionString("DefaultConnection"));
 
-// Usar Swagger solo en desarrollo o siempre si prefieres
+// Usar Swagger solo en desarrollo
 app.UseSwagger();
 app.UseSwaggerUI();
 
