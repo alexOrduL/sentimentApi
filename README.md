@@ -17,17 +17,34 @@ API RESTful para gestionar comentarios de productos y analizar su sentimiento. D
 
 ## 🧱 Requisitos
 
-- [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download)
+
 - [Docker](https://www.docker.com/)
-- (Opcional) Azure Data Studio o DBeaver para explorar la base de datos.
+- (Opcional) DBeaver para explorar la base de datos.
 
 ---
 
 ## 🐳 Ejecución con Docker
 
-1. Clona el repositorio
-2. En la raiz del proyecto:
-      ```bash
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/tu_usuario/sentiment-api.git
+   cd sentiment-api
+   ```
    
-   docker compose up -d --build
+2. Levanta los servicios (API + SQL Server) con Docker Compose:
+
+      ```bash
+      docker compose up -d --build
+      ```
+
+3. Accede a la API y documentación Swagger en:
+      ```bash
+      http://localhost:5001/swagger/index.html
+      ```
+4. Para detener los contenedores:
+      ```bash
+      docker compose down
+      ```
 
